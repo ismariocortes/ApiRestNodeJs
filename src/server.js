@@ -7,19 +7,20 @@
 
 /* Modules */
 const express = require ('express');
-
 const morgan = require('morgan');
+const methodOverride = require('method-override');
 
 /* inicializations */
 const app = express();
 
 /* settings */
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 3000);
 
 /* middlewares */
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}))
 app.use(express.json()); // Permite al servidor entender formato json
+app.use(methodOverride('_method'));
 
 
 /* routes */
