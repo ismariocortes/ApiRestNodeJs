@@ -7,7 +7,7 @@
 
 const { Router } = require('express');
 const router = Router();
-const us = require('underscore');
+/* const us = require('underscore'); */
 
 /* const movies = require('../sample.json'); */
 /* console.log(movies); */

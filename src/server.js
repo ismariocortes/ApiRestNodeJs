@@ -7,6 +7,7 @@
 
 /* Modules */
 const express = require ('express');
+
 const morgan = require('morgan');
 
 /* inicializations */
@@ -22,7 +23,7 @@ app.use(express.json()); // Permite al servidor entender formato json
 
 
 /* routes */
-app.use(require('./routes/index'));
+/* app.use(require('./routes/index')); */
 app.use('/api/movies',require('./routes/movies'));
 app.use('/api/users',require('./routes/users'));
 
