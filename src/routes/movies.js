@@ -20,7 +20,9 @@ const {
     updateMovie
 } = require('../controllers/movies');
 
-router.get('/', returnMovies);
+const {isAuthenticated} = require('../helpers/auth');
+
+router.get('/', isAuthenticated, returnMovies);
 
  /* router.post('/', (req, resp) => {
     const { title, director, year } = req.body;
@@ -33,7 +35,7 @@ router.get('/', returnMovies);
         resp.send('wrong request');
     }
 }); */
-router.post('/', createNewMovie);
+router.post('/', isAuthenticated, createNewMovie);
 
 /*router.put('/:id', (req, res) => {
     const {id} = req.params;
@@ -53,7 +55,7 @@ router.post('/', createNewMovie);
 
 });
  */
-router.put('/:id', updateMovie);
+router.put('/:id', isAuthenticated, updateMovie);
 
 /* router.delete('/:id', (req, res) => {
     const { id } = req.params;
@@ -64,7 +66,7 @@ router.put('/:id', updateMovie);
     });
     res.send(movies);
 }); */
-router.delete('/:id', deleteMovie);
+router.delete('/:id', isAuthenticated, deleteMovie);
 
 
 module.exports = router;
