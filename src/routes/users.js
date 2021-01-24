@@ -1,4 +1,4 @@
-const { Router } = require('express');
+/* const { Router } = require('express');
 const router = Router();
 
 const fetch = require('node-fetch');
@@ -11,4 +11,4 @@ router.get('/', async (req, res) => {
 });
 
 
-module.exports = router;
+module.exports = router; */

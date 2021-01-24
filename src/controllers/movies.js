@@ -35,7 +35,6 @@ moviesCtrlr.createNewMovie = async (req, res) => {
     const movies = await Movie.find().lean();
     console.log(movies);
     res.json(movies);
-
 }
 
 // Método que actualiza la información de un auto

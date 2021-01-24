@@ -3,8 +3,8 @@ const User = require('../models/user')
 
 const helpers = {};
 
+/* Comprueba que la petición reciba un token válido */
 helpers.isAuthenticated = async (req, res, next) => {
-
     try {
         console.log(req.header('Authorization'));
         const token = req.header('Authorization').replace('Bearer ', '')
@@ -15,8 +15,6 @@ helpers.isAuthenticated = async (req, res, next) => {
         if (!user) {
             throw new Error()
         }
-        /* req.user = user
-        req.token = token */
         next()
     } catch (error) {
         res.status(401).send({ error: 'Not authorized to access this resource' })        

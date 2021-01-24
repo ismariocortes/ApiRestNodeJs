@@ -7,10 +7,6 @@
 
 const { Router } = require('express');
 const router = Router();
-/* const us = require('underscore'); */
-
-/* const movies = require('../sample.json'); */
-/* console.log(movies); */
 
 // Se requieren los métodos del controlador de Movies
 const {
@@ -20,52 +16,19 @@ const {
     updateMovie
 } = require('../controllers/movies');
 
+/* Valida que el usuario esté logueado  */
 const {isAuthenticated} = require('../helpers/auth');
 
+/* Devuelve el json con todas las películas en la bd */
 router.get('/', isAuthenticated, returnMovies);
 
- /* router.post('/', (req, resp) => {
-    const { title, director, year } = req.body;
-    if(title && director && year){
-        const id = movies.length + 1;
-        const newMovie = {id,...req.body};
-        movies.push(newMovie);
-        resp.json(movies);
-    }else{
-        resp.send('wrong request');
-    }
-}); */
+/* Crea una nueva película y devuelve el json actualizado */
 router.post('/', isAuthenticated, createNewMovie);
 
-/*router.put('/:id', (req, res) => {
-    const {id} = req.params;
-    const { title, director, year } = req.body;
-    if(title && director && year){
-        us.each(movies, (movie, i) => {
-            if(movie.id == id){
-                movie.title = title;
-                movie.director = director;
-                movie.year = year;
-            }
-        });
-        res.json(movies);
-    }else{
-        res.status(500).json({'error': 'hubo un error'});
-    }
-
-});
- */
+/* Actualiza una película y devuelve el json actualizado */
 router.put('/:id', isAuthenticated, updateMovie);
 
-/* router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    us.each(movies, (movie, i) => {
-        if(movie.id == id){
-            movies.splice(i, 1);
-        }
-    });
-    res.send(movies);
-}); */
+/* Elimina una película y devuelve el json actualizado */
 router.delete('/:id', isAuthenticated, deleteMovie);
 
 
